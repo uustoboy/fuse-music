@@ -4,7 +4,7 @@ process.env.BABEL_ENV = 'web'
 
 const path = require('path')
 const webpack = require('webpack')
-
+console.log(path.resolve(__dirname,'../node_modules/base_mixins/_base_mixins.scss'))
 const BabiliWebpackPlugin = require('babili-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -31,7 +31,17 @@ let webConfig = {
       },
       {
         test: /\.scss$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader']
+        use: [
+          'vue-style-loader', 'css-loader', 'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              // Provide path to the file with resources
+              //resources: './node_modules/base_mixins/_base_mixins.scss',
+              resources: './node_modules/base_mixins/_base_mixins.scss',
+            },
+          }
+        ]
       },
       {
         test: /\.sass$/,
@@ -43,7 +53,8 @@ let webConfig = {
             loader: 'sass-resources-loader',
             options: {
               // Provide path to the file with resources
-              resources: './node_modules/base_mixins/_base_mixins.scss',
+              //resources: './node_modules/base_mixins/_base_mixins.scss',
+              resources: path.resolve(__dirname,'../node_modules/base_mixins/_base_mixins.scss'),
             },
           }
         ]

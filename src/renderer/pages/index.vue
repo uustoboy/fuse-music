@@ -1,7 +1,7 @@
 <template>
     <div>
         <header-bar/>
-        12
+
     </div>
 </template>
 

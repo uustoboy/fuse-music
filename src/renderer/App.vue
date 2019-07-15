@@ -12,13 +12,7 @@
 
 <style lang="scss">
   /* CSS */
-  *{
-    margin: 0;
-    padding: 0;
-  }
-  .a{
-   .b{
-     width:100px;
-   }
-  }
+  @import "./node_modules/base_mixins/_base_mixins.scss";
+  @include min-base();
+
 </style>
