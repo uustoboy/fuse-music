@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain, ipcRenderer } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -31,6 +31,8 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
+
+
 }
 
 app.on('ready', createWindow)
@@ -40,6 +42,17 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+ipcMain.on('asynchronous-message', (event, arg) => {
+  console.log(arg)
+  event.sender.send('asynchronous-reply', 'pong')
+})
+
+ipcMain.on('synchronous-message', (event, arg) => {
+  console.log(arg)  // prints "ping"
+  event.returnValue = 'pong'
+})
+
 
 app.on('activate', () => {
   if (mainWindow === null) {
