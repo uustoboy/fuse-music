@@ -36,7 +36,6 @@
 </script>
 
 <style scoped lang="scss">
-    @import "./node_modules/base_mixins/_base_mixins.scss";
     .header{
         height: 50px;
         @include bgc(#FFB400);

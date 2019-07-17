@@ -1,10 +1,29 @@
 <template>
     <div class="play-bar">
         <div class="play-btnMain">
-            <i class="el-icon-d-arrow-left play-btnLeft"></i>
-            <i class="el-icon-video-play play-btnPlay play-btn"></i>
-            <i class="el-icon-d-arrow-right play-btnRight"></i>
+            <i class="element-icons el-icon-houtui play-btnLeft"></i>
+            <i class="element-icons el-icon-bofang play-btnPlay play-btn"></i>
+            <i class="element-icons el-icon-qianjin play-btnRight"></i>
         </div>
+        <div>
+
+        </div>
+        <div>
+
+        </div>
+        <div>
+            <i class="el-icon-laba"></i>
+            <el-slider v-model="value1"></el-slider>
+            <div>
+                随
+            </div>
+            <span>词</span>
+            <span>
+                <i class="el-icon-playLists"></i>
+            </span>
+
+        </div>
+
     </div>
 </template>
 
@@ -15,7 +34,6 @@
 </script>
 
 <style scoped lang="scss">
-    @import "./node_modules/base_mixins/_base_mixins.scss";
     .play-bar{
         @include flex;
         @include fixed((b:0,l:0,w:100%,h:48));

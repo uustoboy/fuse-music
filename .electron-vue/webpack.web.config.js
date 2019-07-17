@@ -32,15 +32,7 @@ let webConfig = {
       {
         test: /\.scss$/,
         use: [
-          'vue-style-loader', 'css-loader', 'sass-loader',
-          {
-            loader: 'sass-resources-loader',
-            options: {
-              // Provide path to the file with resources
-              //resources: './node_modules/base_mixins/_base_mixins.scss',
-              resources: './node_modules/base_mixins/_base_mixins.scss',
-            },
-          }
+          'vue-style-loader', 'css-loader', 'sass-loader'
         ]
       },
       {

@@ -12,6 +12,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
+// 全局文件引入 当然只想编译一个文件的话可以省去这个函数
+function resolveResource(name) {
+  return path.resolve(__dirname, '../node_modules/base_mixins/' + name);
+}
+
 /**
  * List of node_modules to include in webpack bundle
  *
@@ -44,7 +49,20 @@ let rendererConfig = {
       },
       {
         test: /\.scss$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader']
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              // Provide path to the file with resources
+              //resources: './node_modules/base_mixins/_base_mixins.scss',
+              //resources: './node_modules/base_mixins/_base_mixins.scss',
+              resources: [resolveResource('_base_mixins.scss')]
+            },
+          }
+        ]
       },
       {
         test: /\.sass$/,
