@@ -8,12 +8,12 @@
         <div class="play-song">
             <span class="play-songLeftTime">01:32</span>
             <span class="play-songRightTime">01:32</span>
-            <el-slider v-model="songTime" :input-size="mini" ></el-slider>
+            <el-slider v-model="songTime"  :change="changeSongTime"></el-slider>
         </div>
         <div class="play-right">
             <i :class="volume==0?'el-icon-jingyin':'el-icon-laba'"></i>
             <span class="volume-slider">
-                <el-slider v-model="volume" :input-size="mini" @change="changeVolume"></el-slider>
+                <el-slider v-model="volume"  @change="changeVolume"></el-slider>
             </span>
             <div class="play-mode" @click="changeMode">
                 {{mode[modeIndex]}}
@@ -26,7 +26,21 @@
                 </span>
             </div>
             <div class="song-listMain" v-show="songListShow">
-
+                <i class="el-icon-close songList-close"></i>
+                <el-tabs type="border-card">
+                    <el-tab-pane>
+                        <span slot="label" class="aa">播放列表</span>
+                        <div>
+                            我的行程
+                        </div>
+                    </el-tab-pane>
+                    <el-tab-pane class="aa">
+                        <span slot="label" >历史记录</span>
+                        <div>
+                            历史记录
+                        </div>
+                    </el-tab-pane>
+                </el-tabs>
             </div>
         </div>
 
@@ -54,6 +68,9 @@
       },
       changeListShow () {
         this.songListShow = !this.songListShow
+      },
+      changeSongTime () {
+        console.log(1)
       }
     }
   }
@@ -132,7 +149,6 @@
     .song-listMain{
         @include abs((r:0,b:49,w:578,h:470));
         @include bgc(#fafafa);
-
     }
     .song-listInfo{
         @include f(0);
@@ -180,4 +196,8 @@
         @include flc(12,16,#333);
         @include mar(-16/2 0 0 0);
     }
+    .songList-close{
+        @include abs((r:10,t:10,z:100));
+    }
+
 </style>
